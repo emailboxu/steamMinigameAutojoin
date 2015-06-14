@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name Monster Minigame Auto-script w/ auto-click
+// @name Monster Minigame autojoin script
 // @namespace https://github.com/RockyTV/steamMinigameAutojoin
-// @description A script that runs the Steam Monster Minigame for you.
-// @version 3.9.1
+// @description A script that automatically joins a Steam Monster Minigame room.
+// @version 1.0
 // @match *://steamcommunity.com/minigame/
 // @match *://steamcommunity.com//minigame/
 // @grant none
@@ -31,7 +31,7 @@ function customJoin(gameid) {
 }
 
 function joinBtnClick() {
-	var element = document.querySelector('.steamdb_minigame_roomid');
+	var element = document.querySelector('.minigame_roomid');
 	if (element) {
 		customJoin(element.value);
 	}
@@ -54,10 +54,10 @@ if (appendTo) {
 	
 	var element = document.createElement('style');
 	element.type = 'text/css';
-	element.innerHTML = '.steamdb_minigame_roomid -webkit-outer-spin-button -webkit-inner-spin-button { webkit-appearance: none; }';
-	element.innerHTML += '.steamdb_minigame_joinbtn { margin-top: 1px; background-color: #8aaf05; font-family: "Press Start 2P", arial, sans-serif; color: #d9ff54; border: 2px solid #a3cf06; font-size: 12px; text-align: center; cursor: pointer; display: inline-block; box-shadow: 2px 2px 0px #000; text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); }';
-	element.innerHTML += '.steamdb_minigame_joinbtn span { padding: 0px 15px; line-height: 32px; }';
-	element.innerHTML += '.steamdb_minigame_joinbtn:hover { background-color: #a3cf06; color: #fff; }';
+	element.innerHTML = '.minigame_roomid -webkit-outer-spin-button -webkit-inner-spin-button { webkit-appearance: none; }';
+	element.innerHTML += '.minigame_joinbtn { margin-top: 1px; background-color: #8aaf05; font-family: "Press Start 2P", arial, sans-serif; color: #d9ff54; border: 2px solid #a3cf06; font-size: 12px; text-align: center; cursor: pointer; display: inline-block; box-shadow: 2px 2px 0px #000; text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); }';
+	element.innerHTML += '.minigame_joinbtn span { padding: 0px 15px; line-height: 32px; }';
+	element.innerHTML += '.minigame_joinbtn:hover { background-color: #a3cf06; color: #fff; }';
 	appendTo.appendChild(element);
 	
 	element = document.createElement('br');
@@ -73,15 +73,15 @@ if (appendTo) {
 	element.value = 0;
 	element.min = 0;
 	element.max = Number.MAX_SAFE_INTEGER;
-	element.className = 'steamdb_minigame_roomid';
-	element.name = 'steamdb_minigame_roomid';
+	element.className = 'minigame_roomid';
+	element.name = 'minigame_roomid';
 	appendTo.appendChild(element);
 	
 	element = document.createElement('br');
 	appendTo.appendChild(element);
 	
 	var linkElement = document.createElement('a');
-	linkElement.className = 'steamdb_minigame_joinbtn';
+	linkElement.className = 'minigame_joinbtn';
 	linkElement.setAttribute('onclick', 'joinBtnClick();');
 	
 	element = document.createElement('span');
