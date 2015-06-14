@@ -17,6 +17,7 @@ function customJoin(gameid) {
 		{ 'gameid' : gameid }
 	).done(function(json) {
 		if (json.success == '1') {
+			window.clearInterval(joinTimer);
 			modal.Dismiss();
 			modal = ShowDialog('Joining game', 'Game found! Redirecting you in a few seconds.');
 			window.setTimeout("top.location.href = 'http://steamcommunity.com/minigame/towerattack/'", 1500);
@@ -40,7 +41,7 @@ function joinBtnClick() {
 function mainBtnClick() {
 	var joinTimer = window.setInterval(function() {
 		window.clearInterval(joinTimer);
-		window.setInterval(customJoin(0), 1000);
+		joinTimer = window.setInterval(customJoin(0), 1000);
 	}, 1000);
 }
 
